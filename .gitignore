@@ -1,0 +1,24 @@
+# Secrets: real credentials live only in .env on this laptop
+.env
+.env.*
+!.env.example
+
+# Python virtual environments
+.venv/
+venv/
+env/
+
+# Raw data downloads and other local data
+data/
+raw/
+
+# Local database files
+*.duckdb
+*.duckdb.wal
+*.db
+*.sqlite
+*.sqlite3
+
+# Python cache files
+__pycache__/
+*.py[cod]

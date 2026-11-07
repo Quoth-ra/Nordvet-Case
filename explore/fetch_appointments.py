@@ -1,17 +1,23 @@
-"""Exploration: download the last 7 days of appointments, exactly as the API returns them.
+"""Exploration: download recent appointments, exactly as the API returns them.
 
 Run from the project folder:
-    .venv\\Scripts\\python.exe explore\\fetch_last_7_days.py
+    .venv\\Scripts\\python.exe explore\\fetch_appointments.py        (API default: last 7 days)
+    .venv\\Scripts\\python.exe explore\\fetch_appointments.py 14     (from 14 days ago to today)
+
+With a number of days, the script sends the documented from/to filters
+(appointment dates, YYYY-MM-DD, in Nordvet's local time).
 
 Each API page is saved unchanged as a JSON file under data/raw/ (ignored by Git),
 so we can look at the real responses before designing the pipeline.
 Credentials are read from .env and never printed.
 """
 import json
+import sys
 import time
 from collections import Counter
-from datetime import datetime, timezone
+from datetime import datetime, timedelta, timezone
 from pathlib import Path
+from zoneinfo import ZoneInfo
 
 import requests
 from dotenv import dotenv_values
@@ -56,8 +62,18 @@ def get(session, credentials, path, params=None):
 
 def main():
     credentials = dotenv_values(PROJECT_DIR / ".env")
+    days = int(sys.argv[1]) if len(sys.argv) > 1 else None  # None = API default.
+
+    # Date filter. Without a number of days we send none, so the API's default
+    # of "last 7 days" applies. "Today" means today in Nordvet's local time.
+    date_filter = {}
+    if days:
+        today = datetime.now(ZoneInfo("Europe/Copenhagen")).date()
+        date_filter = {"from": str(today - timedelta(days=days)), "to": str(today)}
+        print(f"date filter: from {date_filter['from']} to {date_filter['to']}")
+
     run_time = datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%SZ")
-    out_dir = PROJECT_DIR / "data" / "raw" / f"last_7_days_{run_time}"
+    out_dir = PROJECT_DIR / "data" / "raw" / f"last_{days or 7}_days_{run_time}"
     out_dir.mkdir(parents=True)
 
     session = requests.Session()
@@ -68,11 +84,11 @@ def main():
     (out_dir / "clinics.json").write_text(response.text, encoding="utf-8")
     print(f"clinics: {len(response.json()['data'])}")
 
-    # Appointments: no date filter, so the API's default of "last 7 days" applies.
+    # Appointments, page by page, following the cursor.
     appointments = []
     cursor = None
     for page in range(1, MAX_PAGES + 1):
-        params = {"limit": PAGE_SIZE}
+        params = {"limit": PAGE_SIZE, **date_filter}  # ** adds the from/to entries, if any.
         if cursor:
             params["cursor"] = cursor
         response = get(session, credentials, "/v1/appointments", params)

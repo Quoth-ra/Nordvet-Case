@@ -68,13 +68,28 @@ def main():
 
 
 def plot_sorted_differences(result, source_name):
-    """Plot each completed appointment's time difference, in sorted order."""
-    fig, ax = plt.subplots(figsize=(10, 5))
-    ax.plot(result.index + 1, result["time_difference_minutes"])  # +1: count cases from 1
-    ax.set_xlabel("Case (completed appointments, sorted)")
-    ax.set_ylabel("time_difference_minutes")
-    ax.set_title(f"Minutes from scheduled time to status update ({source_name})")
-    ax.grid(True, alpha=0.3)
+    """Plot each completed appointment's time difference, in sorted order.
+
+    Top panel: the full range. Bottom panel: the same line zoomed in to 0-400 minutes,
+    because a few extreme cases flatten everything else in the top panel.
+    """
+    zoom_max = 400
+    cases = result.index + 1  # Count cases from 1 instead of 0.
+    minutes = result["time_difference_minutes"]
+    cut_off = (minutes > zoom_max).sum()
+
+    fig, (full, zoom) = plt.subplots(2, 1, figsize=(10, 9), sharex=True)
+    full.plot(cases, minutes)
+    full.set_title(f"Minutes from scheduled time to status update ({source_name})")
+
+    zoom.plot(cases, minutes)
+    zoom.set_ylim(0, zoom_max)
+    zoom.set_title(f"Zoomed to 0-{zoom_max} minutes ({cut_off} cases above {zoom_max} not shown)")
+    zoom.set_xlabel("Case (completed appointments, sorted)")
+
+    for ax in (full, zoom):
+        ax.set_ylabel("time_difference_minutes")
+        ax.grid(True, alpha=0.3)
 
     out_file = PROJECT_DIR / "data" / "plots" / f"completed_time_difference_{source_name}.png"
     out_file.parent.mkdir(parents=True, exist_ok=True)

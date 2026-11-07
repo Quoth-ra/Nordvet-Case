@@ -171,7 +171,7 @@ def check(con):
         "appointments without a scheduled time":
             "SELECT COUNT(*) FROM appointments WHERE scheduled_at_utc IS NULL",
         "active clinics without appointments in the last 28 days":
-            "SELECT COUNT(*) FROM report_clinic_summary WHERE booked_28_days IS NULL",
+            "SELECT COUNT(*) FROM report_clinic_summary WHERE slots_28_days IS NULL",
     }
     problems = []
     for description, query in checks.items():

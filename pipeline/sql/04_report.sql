@@ -2,8 +2,9 @@
 --
 -- Rates (in %):
 --   no_show_rate      = no_show / (completed + no_show)
---   late_cancel_rate  = late_cancelled / booked
---   cancel_rate       = cancelled / booked   (early cancellations only)
+--   (slots = completed + no_show + late_cancelled + cancelled, see 03_clinic_day.sql)
+--   late_cancel_rate  = late_cancelled / slots
+--   cancel_rate       = cancelled / slots    (early cancellations only)
 -- Windows, relative to the day of the latest run ("today", which is left out
 -- because it isn't over yet):
 --   last_day = the last day before today with appointments (Saturday on Mondays)
@@ -47,7 +48,7 @@ WITH sums AS (
         w.window_order,
         w.date_from,
         w.date_to,
-        CAST(SUM(d.booked) AS INTEGER)           AS booked,
+        CAST(SUM(d.slots) AS INTEGER)            AS slots,
         CAST(SUM(d.expected) AS INTEGER)         AS expected,
         CAST(SUM(d.no_show) AS INTEGER)          AS no_show,
         CAST(SUM(d.no_show_inferred) AS INTEGER) AS no_show_inferred,
@@ -65,8 +66,8 @@ WITH sums AS (
 SELECT
     *,
     ROUND(100.0 * no_show / NULLIF(expected, 0), 1)      AS no_show_rate_pct,
-    ROUND(100.0 * late_cancelled / NULLIF(booked, 0), 1) AS late_cancel_rate_pct,
-    ROUND(100.0 * cancelled / NULLIF(booked, 0), 1)      AS cancel_rate_pct,
+    ROUND(100.0 * late_cancelled / NULLIF(slots, 0), 1) AS late_cancel_rate_pct,
+    ROUND(100.0 * cancelled / NULLIF(slots, 0), 1)      AS cancel_rate_pct,
     ROUND(lost_minutes / 60.0, 1)                        AS lost_vet_hours
 FROM sums;
 
@@ -79,7 +80,7 @@ SELECT
     country,
     MAX(CASE WHEN window_name = 'last_day' THEN date_from END)            AS last_day,
 
-    MAX(CASE WHEN window_name = 'last_day' THEN booked END)               AS booked_last_day,
+    MAX(CASE WHEN window_name = 'last_day' THEN slots END)                AS slots_last_day,
     MAX(CASE WHEN window_name = 'last_day' THEN expected END)             AS expected_last_day,
     MAX(CASE WHEN window_name = 'last_day' THEN no_show END)              AS no_show_last_day,
     MAX(CASE WHEN window_name = 'last_day' THEN no_show_inferred END)     AS no_show_inferred_last_day,
@@ -88,7 +89,7 @@ SELECT
     MAX(CASE WHEN window_name = 'last_day' THEN cancel_rate_pct END)      AS cancel_rate_pct_last_day,
     MAX(CASE WHEN window_name = 'last_day' THEN lost_vet_hours END)       AS lost_vet_hours_last_day,
 
-    MAX(CASE WHEN window_name = '7_days' THEN booked END)                 AS booked_7_days,
+    MAX(CASE WHEN window_name = '7_days' THEN slots END)                  AS slots_7_days,
     MAX(CASE WHEN window_name = '7_days' THEN expected END)               AS expected_7_days,
     MAX(CASE WHEN window_name = '7_days' THEN no_show END)                AS no_show_7_days,
     MAX(CASE WHEN window_name = '7_days' THEN no_show_rate_pct END)       AS no_show_rate_pct_7_days,
@@ -96,7 +97,7 @@ SELECT
     MAX(CASE WHEN window_name = '7_days' THEN cancel_rate_pct END)        AS cancel_rate_pct_7_days,
     MAX(CASE WHEN window_name = '7_days' THEN lost_vet_hours END)         AS lost_vet_hours_7_days,
 
-    MAX(CASE WHEN window_name = '28_days' THEN booked END)                AS booked_28_days,
+    MAX(CASE WHEN window_name = '28_days' THEN slots END)                 AS slots_28_days,
     MAX(CASE WHEN window_name = '28_days' THEN expected END)              AS expected_28_days,
     MAX(CASE WHEN window_name = '28_days' THEN no_show END)               AS no_show_28_days,
     MAX(CASE WHEN window_name = '28_days' THEN no_show_rate_pct END)      AS no_show_rate_pct_28_days,
@@ -121,7 +122,7 @@ SELECT
     c.name AS clinic_name,
     d.scheduled_date,
     dayname(d.scheduled_date) AS weekday,
-    d.booked,
+    d.slots,
     d.expected,
     d.completed,
     d.no_show,
@@ -130,8 +131,8 @@ SELECT
     d.late_cancelled,
     d.cancelled,
     ROUND(100.0 * d.no_show / NULLIF(d.expected, 0), 1)      AS no_show_rate_pct,
-    ROUND(100.0 * d.late_cancelled / NULLIF(d.booked, 0), 1) AS late_cancel_rate_pct,
-    ROUND(100.0 * d.cancelled / NULLIF(d.booked, 0), 1)      AS cancel_rate_pct,
+    ROUND(100.0 * d.late_cancelled / NULLIF(d.slots, 0), 1) AS late_cancel_rate_pct,
+    ROUND(100.0 * d.cancelled / NULLIF(d.slots, 0), 1)      AS cancel_rate_pct,
     n.network_no_show_rate_pct
 FROM clinic_day AS d
 JOIN clinics AS c ON c.clinic_id = d.clinic_id

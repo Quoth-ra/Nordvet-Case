@@ -3,7 +3,9 @@
 -- Counts are cast to INTEGER: SUM alone gives a 128-bit integer, which the
 -- Parquet export would turn into a decimal number.
 --
---   booked    = every appointment whose outcome is known (all but pending)
+--   slots     = every booked time slot whose outcome is known: completed, no_show,
+--               late_cancelled and cancelled (all but pending). Not the same as
+--               VetOne's status "booked", which means still open.
 --   expected  = completed + no_show: the clients who were expected to come
 
 CREATE OR REPLACE VIEW clinic_day AS
@@ -11,7 +13,7 @@ SELECT
     clinic_id,
     scheduled_date,
     CAST(COUNT(*) AS INTEGER)                                                 AS appointments,
-    CAST(SUM(CASE WHEN inferred_status <> 'pending' THEN 1 ELSE 0 END) AS INTEGER)             AS booked,
+    CAST(SUM(CASE WHEN inferred_status <> 'pending' THEN 1 ELSE 0 END) AS INTEGER)             AS slots,
     CAST(SUM(CASE WHEN inferred_status IN ('completed', 'no_show') THEN 1 ELSE 0 END) AS INTEGER) AS expected,
     CAST(SUM(CASE WHEN inferred_status = 'completed' THEN 1 ELSE 0 END) AS INTEGER)            AS completed,
     CAST(SUM(CASE WHEN inferred_status = 'no_show' THEN 1 ELSE 0 END) AS INTEGER)              AS no_show,

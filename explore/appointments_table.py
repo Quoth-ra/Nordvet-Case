@@ -8,7 +8,13 @@ import json
 import sys
 from pathlib import Path
 
+import matplotlib
+
+matplotlib.use("Agg")  # Draw straight to a file, without opening a window.
+import matplotlib.pyplot as plt
 import pandas as pd
+
+PROJECT_DIR = Path(__file__).resolve().parent.parent
 
 # Show all columns side by side instead of hiding some behind "...".
 pd.set_option("display.width", 200)
@@ -47,11 +53,33 @@ def main():
     completed["time_difference_minutes"] = (updated - scheduled).dt.total_seconds() / 60
 
     result = completed[["id", "clinic_id", "vet_id", "time_difference_minutes", "duration_minutes"]]
-    print(f"\n=== Completed appointments: {len(result)} rows")
+
+    # Sort from shortest to longest time difference. reset_index(drop=True)
+    # renumbers the rows 0, 1, 2, ... in the new order, so the row number
+    # becomes each appointment's position in the sorted list.
+    result = result.sort_values("time_difference_minutes").reset_index(drop=True)
+    print(f"\n=== Completed appointments, sorted by time difference: {len(result)} rows")
     print(result)
 
     print("\n=== Summary of the two minute columns")
     print(result[["time_difference_minutes", "duration_minutes"]].describe())
+
+    plot_sorted_differences(result, Path(folder).name)
+
+
+def plot_sorted_differences(result, source_name):
+    """Plot each completed appointment's time difference, in sorted order."""
+    fig, ax = plt.subplots(figsize=(10, 5))
+    ax.plot(result.index + 1, result["time_difference_minutes"])  # +1: count cases from 1
+    ax.set_xlabel("Case (completed appointments, sorted)")
+    ax.set_ylabel("time_difference_minutes")
+    ax.set_title(f"Minutes from scheduled time to status update ({source_name})")
+    ax.grid(True, alpha=0.3)
+
+    out_file = PROJECT_DIR / "data" / "plots" / f"completed_time_difference_{source_name}.png"
+    out_file.parent.mkdir(parents=True, exist_ok=True)
+    fig.savefig(out_file, dpi=120, bbox_inches="tight")
+    print(f"\nPlot saved to {out_file.relative_to(PROJECT_DIR)}")
 
 
 if __name__ == "__main__":

@@ -47,4 +47,5 @@ Log every choice here: what was decided, why, and the alternative considered.
 | --- | --- | --- |
 | Keep raw API responses unchanged as JSON files in `data/raw/`, never committed | We can always go back to exactly what the API sent, and the case asks for no data dumps in the submission | Save only parsed records, or keep them in a temporary folder outside the project |
 | Keep API exploration scripts in `explore/` and commit them | Shows how the API was explored before the pipeline was designed, and the step can be repeated | Throwaway scripts outside the repo |
+| Use matplotlib for exploration charts, saved as PNG in `data/plots/` (not committed) | pandas plots with it by default, so the code stays short; files can be viewed and shown without a pop-up window | plotly (interactive, but a bigger package and different syntax), or a pop-up window (nothing saved) |
 | Use pandas for exploring the data in Python | Standard, readable table library, close to PySpark DataFrames | DuckDB with SQL (would pick the database before the pipeline is designed), or plain Python (more code, harder to read) |

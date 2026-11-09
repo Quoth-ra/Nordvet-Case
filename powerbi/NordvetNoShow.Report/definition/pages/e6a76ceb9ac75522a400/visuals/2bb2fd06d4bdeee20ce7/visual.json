@@ -1,0 +1,90 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
+  "name": "2bb2fd06d4bdeee20ce7",
+  "position": {
+    "x": 299.65317919075142,
+    "y": 39.636663914120561,
+    "z": 2,
+    "height": 98.29892650701899,
+    "width": 299.65317919075142,
+    "tabOrder": 2
+  },
+  "visual": {
+    "visualType": "cardVisual",
+    "query": {
+      "queryState": {
+        "Data": {
+          "projections": [
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "report_clinic_summary"
+                        }
+                      },
+                      "Property": "no_show_rate_pct_last_day"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(report_clinic_summary.no_show_rate_pct_last_day)",
+              "nativeQueryRef": "No-show % last day",
+              "displayName": "No-show % last day"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Aggregation": {
+                "Expression": {
+                  "Column": {
+                    "Expression": {
+                      "SourceRef": {
+                        "Entity": "report_clinic_summary"
+                      }
+                    },
+                    "Property": "no_show_rate_pct_last_day"
+                  }
+                },
+                "Function": 0
+              }
+            },
+            "direction": "Descending"
+          }
+        ],
+        "isDefaultSort": true
+      }
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "96a4254018d1082213a1",
+        "field": {
+          "Aggregation": {
+            "Expression": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "report_clinic_summary"
+                  }
+                },
+                "Property": "no_show_rate_pct_last_day"
+              }
+            },
+            "Function": 0
+          }
+        },
+        "type": "Advanced"
+      }
+    ]
+  }
+}

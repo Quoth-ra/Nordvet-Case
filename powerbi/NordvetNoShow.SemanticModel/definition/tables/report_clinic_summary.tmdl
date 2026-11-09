@@ -1,0 +1,265 @@
+table report_clinic_summary
+	lineageTag: 363f85d2-89e1-4df3-a753-d5095afb6fd7
+
+	column clinic_id
+		dataType: string
+		lineageTag: d5576db2-fd7b-4cc0-bf5f-36d47646eca8
+		summarizeBy: none
+		sourceColumn: clinic_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column clinic_name
+		dataType: string
+		lineageTag: 75fe9349-673a-43ea-851a-2f07b05e2177
+		summarizeBy: none
+		sourceColumn: clinic_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column country
+		dataType: string
+		lineageTag: b497a614-f572-4351-a78d-06106294ae6a
+		summarizeBy: none
+		sourceColumn: country
+
+		annotation SummarizationSetBy = Automatic
+
+	column last_day
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 8b114c23-531c-4760-92d5-5a4d00ca38d5
+		summarizeBy: none
+		sourceColumn: last_day
+
+		variation Variation
+			isDefault
+			relationship: 82ba0efc-fde2-466f-8f1b-7edca8829d37
+			defaultHierarchy: LocalDateTable_3a0b33e6-6756-42a8-a7e6-2531584d5b03.Datumshierarchie
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column slots_last_day
+		dataType: int64
+		formatString: 0
+		lineageTag: 75a9dc41-f13e-4570-8be5-fcc18533d3b0
+		summarizeBy: sum
+		sourceColumn: slots_last_day
+
+		annotation SummarizationSetBy = Automatic
+
+	column expected_last_day
+		dataType: int64
+		formatString: 0
+		lineageTag: ca866bbd-0af0-4f14-8f0f-c66fafe83564
+		summarizeBy: sum
+		sourceColumn: expected_last_day
+
+		annotation SummarizationSetBy = Automatic
+
+	column no_show_last_day
+		dataType: int64
+		formatString: 0
+		lineageTag: 0f8ff604-4785-456b-9c64-1a84bcebb5d8
+		summarizeBy: sum
+		sourceColumn: no_show_last_day
+
+		annotation SummarizationSetBy = Automatic
+
+	column no_show_inferred_last_day
+		dataType: int64
+		formatString: 0
+		lineageTag: 15abc5f8-9a9d-4327-b989-cc43e6d3c647
+		summarizeBy: sum
+		sourceColumn: no_show_inferred_last_day
+
+		annotation SummarizationSetBy = Automatic
+
+	column no_show_rate_pct_last_day
+		dataType: double
+		lineageTag: b13506ca-f7ca-4fff-a40e-a680bed84a29
+		summarizeBy: sum
+		sourceColumn: no_show_rate_pct_last_day
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column late_cancel_rate_pct_last_day
+		dataType: double
+		lineageTag: dd81669a-79fd-4c70-b97a-e5c703453aeb
+		summarizeBy: sum
+		sourceColumn: late_cancel_rate_pct_last_day
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column cancel_rate_pct_last_day
+		dataType: double
+		lineageTag: d0eb3c1c-468d-44c3-9303-5ef67df69a30
+		summarizeBy: sum
+		sourceColumn: cancel_rate_pct_last_day
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column lost_vet_hours_last_day
+		dataType: double
+		lineageTag: b9ab8292-909b-419b-8613-b7369abafce3
+		summarizeBy: sum
+		sourceColumn: lost_vet_hours_last_day
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column slots_7_days
+		dataType: int64
+		formatString: 0
+		lineageTag: 6bcf4e85-76fb-4dad-a9c5-cc679e3081a8
+		summarizeBy: sum
+		sourceColumn: slots_7_days
+
+		annotation SummarizationSetBy = Automatic
+
+	column expected_7_days
+		dataType: int64
+		formatString: 0
+		lineageTag: 26591b3d-de40-4ec4-92bc-0008c3887c95
+		summarizeBy: sum
+		sourceColumn: expected_7_days
+
+		annotation SummarizationSetBy = Automatic
+
+	column no_show_7_days
+		dataType: int64
+		formatString: 0
+		lineageTag: af5527f4-6ca1-494d-87f4-6f52b157f451
+		summarizeBy: sum
+		sourceColumn: no_show_7_days
+
+		annotation SummarizationSetBy = Automatic
+
+	column no_show_rate_pct_7_days
+		dataType: double
+		lineageTag: 17a59d1f-98b9-4903-b33b-0c24e5f262d9
+		summarizeBy: sum
+		sourceColumn: no_show_rate_pct_7_days
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column late_cancel_rate_pct_7_days
+		dataType: double
+		lineageTag: 9fb20ea9-c576-4dc2-b02e-bcb424a19ba0
+		summarizeBy: sum
+		sourceColumn: late_cancel_rate_pct_7_days
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column cancel_rate_pct_7_days
+		dataType: double
+		lineageTag: c448c285-0d99-40ba-b3ef-59e455a053e8
+		summarizeBy: sum
+		sourceColumn: cancel_rate_pct_7_days
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column lost_vet_hours_7_days
+		dataType: double
+		lineageTag: b6cc44a1-802d-439e-839b-ba99df013d7b
+		summarizeBy: sum
+		sourceColumn: lost_vet_hours_7_days
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column slots_28_days
+		dataType: int64
+		formatString: 0
+		lineageTag: 61a43fdc-14b7-402c-9439-79f47b46d541
+		summarizeBy: sum
+		sourceColumn: slots_28_days
+
+		annotation SummarizationSetBy = Automatic
+
+	column expected_28_days
+		dataType: int64
+		formatString: 0
+		lineageTag: d6c95d6b-47af-444d-8fe6-482b4bf1bfcd
+		summarizeBy: sum
+		sourceColumn: expected_28_days
+
+		annotation SummarizationSetBy = Automatic
+
+	column no_show_28_days
+		dataType: int64
+		formatString: 0
+		lineageTag: 897bd338-7356-4986-ba28-e6bfe8dece3b
+		summarizeBy: sum
+		sourceColumn: no_show_28_days
+
+		annotation SummarizationSetBy = Automatic
+
+	column no_show_rate_pct_28_days
+		dataType: double
+		lineageTag: 221be7b5-373a-4c02-a826-356f6dbc7107
+		summarizeBy: sum
+		sourceColumn: no_show_rate_pct_28_days
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column late_cancel_rate_pct_28_days
+		dataType: double
+		lineageTag: a78c8120-4e50-4bd6-8892-fa55f40fc482
+		summarizeBy: sum
+		sourceColumn: late_cancel_rate_pct_28_days
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column cancel_rate_pct_28_days
+		dataType: double
+		lineageTag: 70e55c43-3ceb-4995-a52c-94e51c413b95
+		summarizeBy: sum
+		sourceColumn: cancel_rate_pct_28_days
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column lost_vet_hours_28_days
+		dataType: double
+		lineageTag: 4ed098a9-1f22-4a20-bd4f-8a31101f2195
+		summarizeBy: sum
+		sourceColumn: lost_vet_hours_28_days
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition report_clinic_summary = m
+		mode: import
+		source =
+				let
+				       Source = Parquet.Document(File.Contents(ExportFolder & "report_clinic_summary.parquet"))
+				   in
+				       Source
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

@@ -1,0 +1,214 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
+  "name": "cdf73e074da83c1535e0",
+  "position": {
+    "x": 825,
+    "y": 632.5,
+    "z": 8,
+    "height": 447.5,
+    "width": 1095,
+    "tabOrder": 8
+  },
+  "visual": {
+    "visualType": "columnChart",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "report_clinic_day"
+                    }
+                  },
+                  "Property": "scheduled_date"
+                }
+              },
+              "queryRef": "report_clinic_day.scheduled_date",
+              "nativeQueryRef": "scheduled_date",
+              "active": true
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "report_clinic_day"
+                        }
+                      },
+                      "Property": "no_show_confirmed"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(report_clinic_day.no_show_confirmed)",
+              "nativeQueryRef": "Confirmed",
+              "displayName": "Confirmed"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "report_clinic_day"
+                        }
+                      },
+                      "Property": "no_show_inferred"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(report_clinic_day.no_show_inferred)",
+              "nativeQueryRef": "Inferred",
+              "displayName": "Inferred"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "report_clinic_day"
+                  }
+                },
+                "Property": "scheduled_date"
+              }
+            },
+            "direction": "Ascending"
+          }
+        ],
+        "isDefaultSort": true
+      }
+    },
+    "objects": {
+      "categoryAxis": [
+        {
+          "properties": {
+            "showAxisTitle": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "titleText": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Date'"
+                }
+              }
+            },
+            "titleFontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "20D"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "subTitle": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "title": [
+        {
+          "properties": {
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Confirmed vs. Inferred no-shows'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "ebec26a062748a4e2024",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "report_clinic_day"
+              }
+            },
+            "Property": "scheduled_date"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "f747a33b815808cae9b6",
+        "field": {
+          "Aggregation": {
+            "Expression": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "report_clinic_day"
+                  }
+                },
+                "Property": "no_show_confirmed"
+              }
+            },
+            "Function": 0
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "9b07e422107e7c0504b1",
+        "field": {
+          "Aggregation": {
+            "Expression": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "report_clinic_day"
+                  }
+                },
+                "Property": "no_show_inferred"
+              }
+            },
+            "Function": 0
+          }
+        },
+        "type": "Advanced"
+      }
+    ]
+  }
+}

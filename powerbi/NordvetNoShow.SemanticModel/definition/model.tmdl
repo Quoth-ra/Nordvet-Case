@@ -1,0 +1,29 @@
+model Model
+	culture: de-DE
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: en-GB
+	valueFilterBehavior: independent
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+annotation __PBI_TimeIntelligenceEnabled = 1
+
+annotation PBI_ProTooling = ["DevMode"]
+
+annotation PBI_QueryOrder = ["ExportFolder","report_clinic_summary","report_run","report_clinic_day","report_clinic_service"]
+
+ref table report_clinic_summary
+ref table DateTableTemplate_e670348d-c20c-409b-96fa-3303cab684d1
+ref table LocalDateTable_3a0b33e6-6756-42a8-a7e6-2531584d5b03
+ref table report_run
+ref table LocalDateTable_04936c2d-a6c0-47d3-ab35-4cd528f4adf8
+ref table LocalDateTable_6bed2c2a-3f09-44fe-ad29-f6ec2f67291f
+ref table LocalDateTable_b9429000-b47b-419c-8ff2-7793f16c9f10
+ref table LocalDateTable_dc18d14c-4554-4d4c-8749-2ce688fbecb3
+ref table report_clinic_day
+ref table LocalDateTable_45811604-a917-42fb-90af-7beca0d6e8e8
+ref table report_clinic_service
+
+ref cultureInfo de-DE
+

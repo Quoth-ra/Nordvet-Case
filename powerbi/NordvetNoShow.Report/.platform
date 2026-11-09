@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Report",
+    "displayName": "NordvetNoShow"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "7a8bdcc6-ab4d-45ec-a7a4-ad2971954ee8"
+  }
+}

@@ -1,0 +1,90 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
+  "name": "793e416173a269e00e70",
+  "position": {
+    "x": 910.05780346820814,
+    "y": 39.636663914120561,
+    "z": 4,
+    "height": 98.29892650701899,
+    "width": 299.65317919075142,
+    "tabOrder": 4
+  },
+  "visual": {
+    "visualType": "cardVisual",
+    "query": {
+      "queryState": {
+        "Data": {
+          "projections": [
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "report_clinic_summary"
+                        }
+                      },
+                      "Property": "no_show_rate_pct_28_days"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(report_clinic_summary.no_show_rate_pct_28_days)",
+              "nativeQueryRef": "No-show % 28d",
+              "displayName": "No-show % 28d"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Aggregation": {
+                "Expression": {
+                  "Column": {
+                    "Expression": {
+                      "SourceRef": {
+                        "Entity": "report_clinic_summary"
+                      }
+                    },
+                    "Property": "no_show_rate_pct_28_days"
+                  }
+                },
+                "Function": 0
+              }
+            },
+            "direction": "Descending"
+          }
+        ],
+        "isDefaultSort": true
+      }
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "df7c3d9e85bd5021c50d",
+        "field": {
+          "Aggregation": {
+            "Expression": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "report_clinic_summary"
+                  }
+                },
+                "Property": "no_show_rate_pct_28_days"
+              }
+            },
+            "Function": 0
+          }
+        },
+        "type": "Advanced"
+      }
+    ]
+  }
+}

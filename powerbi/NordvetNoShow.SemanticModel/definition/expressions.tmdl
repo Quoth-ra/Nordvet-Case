@@ -1,0 +1,7 @@
+expression ExportFolder = "C:\Users\Public\Nordvet\export\" meta [IsParameterQuery=true, Type="Text", IsParameterQueryRequired=true]
+	lineageTag: 3411e651-add3-4ade-9684-187082096deb
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Text
+

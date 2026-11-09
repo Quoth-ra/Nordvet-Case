@@ -1,0 +1,67 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
+  "name": "001a62fbc2ad00005146",
+  "position": {
+    "x": 0,
+    "y": 39.636663914120561,
+    "z": 1,
+    "height": 98.29892650701899,
+    "width": 299.65317919075142,
+    "tabOrder": 1
+  },
+  "visual": {
+    "visualType": "cardVisual",
+    "query": {
+      "queryState": {
+        "Data": {
+          "projections": [
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "report_clinic_summary"
+                        }
+                      },
+                      "Property": "clinic_name"
+                    }
+                  },
+                  "Function": 3
+                }
+              },
+              "queryRef": "Min(report_clinic_summary.clinic_name)",
+              "nativeQueryRef": "Clinic",
+              "displayName": "Clinic"
+            }
+          ]
+        }
+      }
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "a52d7b4aaea50c37c020",
+        "field": {
+          "Aggregation": {
+            "Expression": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "report_clinic_summary"
+                  }
+                },
+                "Property": "clinic_name"
+              }
+            },
+            "Function": 3
+          }
+        },
+        "type": "Advanced"
+      }
+    ]
+  }
+}

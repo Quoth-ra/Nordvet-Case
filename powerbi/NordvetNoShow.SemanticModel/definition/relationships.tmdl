@@ -1,0 +1,38 @@
+relationship 82ba0efc-fde2-466f-8f1b-7edca8829d37
+	joinOnDateBehavior: datePartOnly
+	fromColumn: report_clinic_summary.last_day
+	toColumn: LocalDateTable_3a0b33e6-6756-42a8-a7e6-2531584d5b03.Date
+
+relationship 9c68c02b-0035-4a48-9ca9-6067fcc5d387
+	joinOnDateBehavior: datePartOnly
+	fromColumn: report_run.as_of_utc
+	toColumn: LocalDateTable_04936c2d-a6c0-47d3-ab35-4cd528f4adf8.Date
+
+relationship 5366cc80-e157-47ee-a16f-b8edde518166
+	joinOnDateBehavior: datePartOnly
+	fromColumn: report_run.run_date
+	toColumn: LocalDateTable_6bed2c2a-3f09-44fe-ad29-f6ec2f67291f.Date
+
+relationship c7e10a57-da3d-4126-a1d8-46bfec0028c6
+	joinOnDateBehavior: datePartOnly
+	fromColumn: report_run.last_day
+	toColumn: LocalDateTable_b9429000-b47b-419c-8ff2-7793f16c9f10.Date
+
+relationship 6dc114b8-dbdb-4d9b-9955-f150e3cb993f
+	joinOnDateBehavior: datePartOnly
+	fromColumn: report_run.data_from
+	toColumn: LocalDateTable_dc18d14c-4554-4d4c-8749-2ce688fbecb3.Date
+
+relationship 23f7667b-723d-4709-82cd-4f45b31fd93e
+	joinOnDateBehavior: datePartOnly
+	fromColumn: report_clinic_day.scheduled_date
+	toColumn: LocalDateTable_45811604-a917-42fb-90af-7beca0d6e8e8.Date
+
+relationship AutoDetected_a16ead2b-a2ad-4584-9742-f377c6da4493
+	fromColumn: report_clinic_day.clinic_id
+	toColumn: report_clinic_summary.clinic_id
+
+relationship AutoDetected_a158c1bf-5c93-4cfb-a0a8-c366fece593b
+	fromColumn: report_clinic_service.clinic_id
+	toColumn: report_clinic_summary.clinic_id
+

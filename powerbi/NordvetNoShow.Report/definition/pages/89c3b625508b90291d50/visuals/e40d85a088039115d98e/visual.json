@@ -1,0 +1,90 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
+  "name": "e40d85a088039115d98e",
+  "position": {
+    "x": 309.30091185410333,
+    "y": 0,
+    "z": 1,
+    "height": 121.09422492401215,
+    "width": 296.17021276595744,
+    "tabOrder": 1
+  },
+  "visual": {
+    "visualType": "cardVisual",
+    "query": {
+      "queryState": {
+        "Data": {
+          "projections": [
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "report_run"
+                        }
+                      },
+                      "Property": "last_day"
+                    }
+                  },
+                  "Function": 3
+                }
+              },
+              "queryRef": "Min(report_run.last_day)",
+              "nativeQueryRef": "Last day",
+              "displayName": "Last day"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Aggregation": {
+                "Expression": {
+                  "Column": {
+                    "Expression": {
+                      "SourceRef": {
+                        "Entity": "report_run"
+                      }
+                    },
+                    "Property": "last_day"
+                  }
+                },
+                "Function": 3
+              }
+            },
+            "direction": "Ascending"
+          }
+        ],
+        "isDefaultSort": true
+      }
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "e06bf10030000ca799c7",
+        "field": {
+          "Aggregation": {
+            "Expression": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "report_run"
+                  }
+                },
+                "Property": "last_day"
+              }
+            },
+            "Function": 3
+          }
+        },
+        "type": "Advanced"
+      }
+    ]
+  }
+}

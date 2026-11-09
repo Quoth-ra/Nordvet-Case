@@ -1,0 +1,735 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
+  "name": "1e4cde38c6ba0d510697",
+  "position": {
+    "x": 11.098265895953757,
+    "y": 120.49545829892651,
+    "z": 2,
+    "height": 943.35260115606934,
+    "width": 1908.9017341040462,
+    "tabOrder": 2
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "report_clinic_summary"
+                    }
+                  },
+                  "Property": "clinic_name"
+                }
+              },
+              "queryRef": "report_clinic_summary.clinic_name",
+              "nativeQueryRef": "Nordvet Clinic",
+              "displayName": "Nordvet Clinic"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "report_clinic_summary"
+                        }
+                      },
+                      "Property": "no_show_rate_pct_28_days"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(report_clinic_summary.no_show_rate_pct_28_days)",
+              "nativeQueryRef": "No-show % 28d",
+              "displayName": "No-show % 28d"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "report_clinic_summary"
+                        }
+                      },
+                      "Property": "no_show_rate_pct_7_days"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(report_clinic_summary.no_show_rate_pct_7_days)",
+              "nativeQueryRef": "No-show % 7d",
+              "displayName": "No-show % 7d"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "report_clinic_summary"
+                        }
+                      },
+                      "Property": "no_show_rate_pct_last_day"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(report_clinic_summary.no_show_rate_pct_last_day)",
+              "nativeQueryRef": "No-show % last day",
+              "displayName": "No-show % last day"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "report_clinic_summary"
+                        }
+                      },
+                      "Property": "no_show_last_day"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(report_clinic_summary.no_show_last_day)",
+              "nativeQueryRef": "No-shows last day1",
+              "displayName": "No-shows last day"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "report_clinic_summary"
+                        }
+                      },
+                      "Property": "expected_last_day"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(report_clinic_summary.expected_last_day)",
+              "nativeQueryRef": "Expected last day",
+              "displayName": "Expected last day"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "report_clinic_summary"
+                        }
+                      },
+                      "Property": "no_show_28_days"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(report_clinic_summary.no_show_28_days)",
+              "nativeQueryRef": "No-shows 28d",
+              "displayName": "No-shows 28d"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "report_clinic_summary"
+                        }
+                      },
+                      "Property": "expected_28_days"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(report_clinic_summary.expected_28_days)",
+              "nativeQueryRef": "Expected 28d",
+              "displayName": "Expected 28d"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "report_clinic_summary"
+                        }
+                      },
+                      "Property": "late_cancel_rate_pct_28_days"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(report_clinic_summary.late_cancel_rate_pct_28_days)",
+              "nativeQueryRef": "Late cancel % 28d",
+              "displayName": "Late cancel % 28d"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "report_clinic_summary"
+                        }
+                      },
+                      "Property": "late_cancel_rate_pct_7_days"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(report_clinic_summary.late_cancel_rate_pct_7_days)",
+              "nativeQueryRef": "Late cancel % 7d",
+              "displayName": "Late cancel % 7d"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "report_clinic_summary"
+                        }
+                      },
+                      "Property": "late_cancel_rate_pct_last_day"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(report_clinic_summary.late_cancel_rate_pct_last_day)",
+              "nativeQueryRef": "Late cancel % last day",
+              "displayName": "Late cancel % last day"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "report_clinic_summary"
+                        }
+                      },
+                      "Property": "cancel_rate_pct_28_days"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(report_clinic_summary.cancel_rate_pct_28_days)",
+              "nativeQueryRef": "Cancel % 28d",
+              "displayName": "Cancel % 28d"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "report_clinic_summary"
+                        }
+                      },
+                      "Property": "cancel_rate_pct_7_days"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(report_clinic_summary.cancel_rate_pct_7_days)",
+              "nativeQueryRef": "Cancel % 7d",
+              "displayName": "Cancel % 7d"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "report_clinic_summary"
+                        }
+                      },
+                      "Property": "cancel_rate_pct_last_day"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(report_clinic_summary.cancel_rate_pct_last_day)",
+              "nativeQueryRef": "Cancel % last day",
+              "displayName": "Cancel % last day"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "report_clinic_summary"
+                        }
+                      },
+                      "Property": "lost_vet_hours_28_days"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(report_clinic_summary.lost_vet_hours_28_days)",
+              "nativeQueryRef": "Lost vet hours 28d",
+              "displayName": "Lost vet hours 28d"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "report_clinic_summary"
+                    }
+                  },
+                  "Property": "country"
+                }
+              },
+              "queryRef": "report_clinic_summary.country",
+              "nativeQueryRef": "Country",
+              "displayName": "Country"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Aggregation": {
+                "Expression": {
+                  "Column": {
+                    "Expression": {
+                      "SourceRef": {
+                        "Entity": "report_clinic_summary"
+                      }
+                    },
+                    "Property": "no_show_rate_pct_28_days"
+                  }
+                },
+                "Function": 0
+              }
+            },
+            "direction": "Descending"
+          }
+        ]
+      }
+    },
+    "objects": {
+      "total": [
+        {
+          "properties": {
+            "totals": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "values": [
+        {
+          "properties": {
+            "backColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "FillRule": {
+                      "Input": {
+                        "Aggregation": {
+                          "Expression": {
+                            "Column": {
+                              "Expression": {
+                                "SourceRef": {
+                                  "Entity": "report_clinic_summary"
+                                }
+                              },
+                              "Property": "no_show_rate_pct_28_days"
+                            }
+                          },
+                          "Function": 0
+                        }
+                      },
+                      "FillRule": {
+                        "linearGradient2": {
+                          "min": {
+                            "color": {
+                              "Literal": {
+                                "Value": "'#FFFFFF'"
+                              }
+                            }
+                          },
+                          "max": {
+                            "color": {
+                              "Literal": {
+                                "Value": "'#D64550'"
+                              }
+                            }
+                          },
+                          "nullColoringStrategy": {
+                            "strategy": {
+                              "Literal": {
+                                "Value": "'asZero'"
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "selector": {
+            "data": [
+              {
+                "dataViewWildcard": {
+                  "matchingOption": 1
+                }
+              }
+            ],
+            "metadata": "Sum(report_clinic_summary.no_show_rate_pct_28_days)"
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "b92113eae91279b61481",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "report_clinic_summary"
+              }
+            },
+            "Property": "clinic_name"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "fe85fbb838609358e709",
+        "field": {
+          "Aggregation": {
+            "Expression": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "report_clinic_summary"
+                  }
+                },
+                "Property": "late_cancel_rate_pct_last_day"
+              }
+            },
+            "Function": 0
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "7b494330720b1ac1e802",
+        "field": {
+          "Aggregation": {
+            "Expression": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "report_clinic_summary"
+                  }
+                },
+                "Property": "cancel_rate_pct_7_days"
+              }
+            },
+            "Function": 0
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "53bfc16b1a4bd0db289e",
+        "field": {
+          "Aggregation": {
+            "Expression": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "report_clinic_summary"
+                  }
+                },
+                "Property": "lost_vet_hours_28_days"
+              }
+            },
+            "Function": 0
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "81aa9bf0cd1191128083",
+        "field": {
+          "Aggregation": {
+            "Expression": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "report_clinic_summary"
+                  }
+                },
+                "Property": "no_show_28_days"
+              }
+            },
+            "Function": 0
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "488089d10e20ddc045c8",
+        "field": {
+          "Aggregation": {
+            "Expression": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "report_clinic_summary"
+                  }
+                },
+                "Property": "no_show_rate_pct_28_days"
+              }
+            },
+            "Function": 0
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "08a95440dc94158088e8",
+        "field": {
+          "Aggregation": {
+            "Expression": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "report_clinic_summary"
+                  }
+                },
+                "Property": "no_show_rate_pct_7_days"
+              }
+            },
+            "Function": 0
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "b0504dd0b5e23a1a2da6",
+        "field": {
+          "Aggregation": {
+            "Expression": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "report_clinic_summary"
+                  }
+                },
+                "Property": "no_show_rate_pct_last_day"
+              }
+            },
+            "Function": 0
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "8a17fca7006b38e33a0b",
+        "field": {
+          "Aggregation": {
+            "Expression": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "report_clinic_summary"
+                  }
+                },
+                "Property": "expected_last_day"
+              }
+            },
+            "Function": 0
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "48cd04631b51c3320541",
+        "field": {
+          "Aggregation": {
+            "Expression": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "report_clinic_summary"
+                  }
+                },
+                "Property": "no_show_last_day"
+              }
+            },
+            "Function": 0
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "e058e21fc57a8077b4ce",
+        "field": {
+          "Aggregation": {
+            "Expression": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "report_clinic_summary"
+                  }
+                },
+                "Property": "expected_28_days"
+              }
+            },
+            "Function": 0
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "4d35f4f0b8936127c313",
+        "field": {
+          "Aggregation": {
+            "Expression": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "report_clinic_summary"
+                  }
+                },
+                "Property": "late_cancel_rate_pct_28_days"
+              }
+            },
+            "Function": 0
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "94de3a95b2787ac3977a",
+        "field": {
+          "Aggregation": {
+            "Expression": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "report_clinic_summary"
+                  }
+                },
+                "Property": "late_cancel_rate_pct_7_days"
+              }
+            },
+            "Function": 0
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "fbfd3fc83cd2805288c4",
+        "field": {
+          "Aggregation": {
+            "Expression": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "report_clinic_summary"
+                  }
+                },
+                "Property": "cancel_rate_pct_28_days"
+              }
+            },
+            "Function": 0
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "5495ac52085182ddb907",
+        "field": {
+          "Aggregation": {
+            "Expression": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "report_clinic_summary"
+                  }
+                },
+                "Property": "cancel_rate_pct_last_day"
+              }
+            },
+            "Function": 0
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "f84ba2a007c71b882000",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "report_clinic_summary"
+              }
+            },
+            "Property": "country"
+          }
+        },
+        "type": "Categorical"
+      }
+    ]
+  }
+}

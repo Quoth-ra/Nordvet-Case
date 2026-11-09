@@ -1,0 +1,85 @@
+table report_run
+	lineageTag: 7ac6417c-143a-4fc0-a78e-3222c5098a7d
+
+	column run_id
+		dataType: string
+		lineageTag: dbdda4c4-0879-4af8-b455-bd2cd9994a62
+		summarizeBy: none
+		sourceColumn: run_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column as_of_utc
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 4e374b3d-022b-4a47-98a6-f68e29f9b0cf
+		summarizeBy: none
+		sourceColumn: as_of_utc
+
+		variation Variation
+			isDefault
+			relationship: 9c68c02b-0035-4a48-9ca9-6067fcc5d387
+			defaultHierarchy: LocalDateTable_04936c2d-a6c0-47d3-ab35-4cd528f4adf8.Datumshierarchie
+
+		annotation SummarizationSetBy = Automatic
+
+	column run_date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 2f7f661d-b9f8-4b5a-9eeb-ec765abb7e0e
+		summarizeBy: none
+		sourceColumn: run_date
+
+		variation Variation
+			isDefault
+			relationship: 5366cc80-e157-47ee-a16f-b8edde518166
+			defaultHierarchy: LocalDateTable_6bed2c2a-3f09-44fe-ad29-f6ec2f67291f.Datumshierarchie
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column last_day
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 1ceb1b8e-cec4-4c70-8471-7a91630db084
+		summarizeBy: none
+		sourceColumn: last_day
+
+		variation Variation
+			isDefault
+			relationship: c7e10a57-da3d-4126-a1d8-46bfec0028c6
+			defaultHierarchy: LocalDateTable_b9429000-b47b-419c-8ff2-7793f16c9f10.Datumshierarchie
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column data_from
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 12b3cb71-6aa7-49cc-b6e0-cb41ea1e6b0f
+		summarizeBy: none
+		sourceColumn: data_from
+
+		variation Variation
+			isDefault
+			relationship: 6dc114b8-dbdb-4d9b-9955-f150e3cb993f
+			defaultHierarchy: LocalDateTable_dc18d14c-4554-4d4c-8749-2ce688fbecb3.Datumshierarchie
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	partition report_run = m
+		mode: import
+		source =
+				let
+				       Source = Parquet.Document(File.Contents(ExportFolder & "report_run.parquet"))
+				   in
+				       Source
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

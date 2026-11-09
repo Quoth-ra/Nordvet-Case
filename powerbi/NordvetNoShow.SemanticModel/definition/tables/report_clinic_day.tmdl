@@ -1,0 +1,167 @@
+table report_clinic_day
+	lineageTag: 26ac95a2-ca63-40c5-9106-2b527dcb2eee
+
+	column clinic_id
+		dataType: string
+		lineageTag: f935ea9a-d9b7-4a45-9a3a-612dd422027b
+		summarizeBy: none
+		sourceColumn: clinic_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column clinic_name
+		dataType: string
+		lineageTag: a0c3b002-687d-41fc-8d62-15a5ac0cbb6e
+		summarizeBy: none
+		sourceColumn: clinic_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column scheduled_date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: ca979091-0676-428f-a2ca-89f6498f098e
+		summarizeBy: none
+		sourceColumn: scheduled_date
+
+		variation Variation
+			isDefault
+			relationship: 23f7667b-723d-4709-82cd-4f45b31fd93e
+			defaultHierarchy: LocalDateTable_45811604-a917-42fb-90af-7beca0d6e8e8.Datumshierarchie
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column weekday
+		dataType: string
+		lineageTag: e282ac6c-15f3-47b4-84d7-750e5ff5df45
+		summarizeBy: none
+		sourceColumn: weekday
+
+		annotation SummarizationSetBy = Automatic
+
+	column slots
+		dataType: int64
+		formatString: 0
+		lineageTag: 015dbfeb-b7fb-4b1e-a43d-3211ea7ef017
+		summarizeBy: sum
+		sourceColumn: slots
+
+		annotation SummarizationSetBy = Automatic
+
+	column expected
+		dataType: int64
+		formatString: 0
+		lineageTag: b13ae217-290d-4a05-a65e-11e46cf86840
+		summarizeBy: sum
+		sourceColumn: expected
+
+		annotation SummarizationSetBy = Automatic
+
+	column completed
+		dataType: int64
+		formatString: 0
+		lineageTag: a2d62aa0-bfd5-4b12-8ee2-ed6e2eb8b7c9
+		summarizeBy: sum
+		sourceColumn: completed
+
+		annotation SummarizationSetBy = Automatic
+
+	column no_show
+		dataType: int64
+		formatString: 0
+		lineageTag: f13810e6-bc73-4306-82c4-036d504b3cd2
+		summarizeBy: sum
+		sourceColumn: no_show
+
+		annotation SummarizationSetBy = Automatic
+
+	column no_show_inferred
+		dataType: int64
+		formatString: 0
+		lineageTag: bf84b804-03f8-4d99-9ea2-dd20c5ede8ab
+		summarizeBy: sum
+		sourceColumn: no_show_inferred
+
+		annotation SummarizationSetBy = Automatic
+
+	column no_show_confirmed
+		dataType: int64
+		formatString: 0
+		lineageTag: da825619-857a-4a4a-86dd-e22324d72ac9
+		summarizeBy: sum
+		sourceColumn: no_show_confirmed
+
+		annotation SummarizationSetBy = Automatic
+
+	column late_cancelled
+		dataType: int64
+		formatString: 0
+		lineageTag: b25468cd-ae43-446b-9dfb-22d1d67ef298
+		summarizeBy: sum
+		sourceColumn: late_cancelled
+
+		annotation SummarizationSetBy = Automatic
+
+	column cancelled
+		dataType: int64
+		formatString: 0
+		lineageTag: 51fdd9a5-e9a5-4b46-bd1c-67508397ad47
+		summarizeBy: sum
+		sourceColumn: cancelled
+
+		annotation SummarizationSetBy = Automatic
+
+	column no_show_rate_pct
+		dataType: double
+		lineageTag: e94b7290-8057-468b-9707-96c788ff068b
+		summarizeBy: sum
+		sourceColumn: no_show_rate_pct
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column late_cancel_rate_pct
+		dataType: double
+		lineageTag: 7da03ebd-eeae-4285-a4b3-025d2d771336
+		summarizeBy: sum
+		sourceColumn: late_cancel_rate_pct
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column cancel_rate_pct
+		dataType: double
+		lineageTag: 30a0295f-f732-4f0f-ad6a-6422f22bf4f9
+		summarizeBy: sum
+		sourceColumn: cancel_rate_pct
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column network_no_show_rate_pct
+		dataType: double
+		lineageTag: 894c6414-30cc-4c31-bd79-3537f5a162a3
+		summarizeBy: sum
+		sourceColumn: network_no_show_rate_pct
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition report_clinic_day = m
+		mode: import
+		source =
+				let
+				       Source = Parquet.Document(File.Contents(ExportFolder & "report_clinic_day.parquet"))
+				   in
+				       Source
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

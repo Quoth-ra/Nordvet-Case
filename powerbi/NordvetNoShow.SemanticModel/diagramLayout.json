@@ -1,0 +1,74 @@
+{
+  "version": "1.1.0",
+  "diagrams": [
+    {
+      "ordinal": 0,
+      "scrollPosition": {
+        "x": 0,
+        "y": 0
+      },
+      "nodes": [
+        {
+          "location": {
+            "x": 618.38305001469371,
+            "y": -50
+          },
+          "nodeIndex": "report_clinic_day",
+          "nodeLineageTag": "26ac95a2-ca63-40c5-9106-2b527dcb2eee",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 50,
+            "y": 5.9851107795995517
+          },
+          "nodeIndex": "report_clinic_service",
+          "nodeLineageTag": "bd831580-26ea-4275-9196-2b5262042865",
+          "size": {
+            "height": 248,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 334.20156119318523,
+            "y": -17.155302040155391
+          },
+          "nodeIndex": "report_clinic_summary",
+          "nodeLineageTag": "363f85d2-89e1-4df3-a753-d5095afb6fd7",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 852.38305001469371,
+            "y": 66.4223489799223
+          },
+          "nodeIndex": "report_run",
+          "nodeLineageTag": "7ac6417c-143a-4fc0-a78e-3222c5098a7d",
+          "size": {
+            "height": 200,
+            "width": 234
+          },
+          "zIndex": 0
+        }
+      ],
+      "name": "Alle Tabellen",
+      "zoomValue": 100,
+      "pinKeyFieldsToTop": false,
+      "showExtraHeaderInfo": false,
+      "hideKeyFieldsWhenCollapsed": false,
+      "tablesLocked": false
+    }
+  ],
+  "selectedDiagram": "Alle Tabellen",
+  "defaultDiagram": "Alle Tabellen"
+}

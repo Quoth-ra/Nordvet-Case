@@ -1,0 +1,134 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
+  "name": "93a70035bd8079733ee6",
+  "position": {
+    "x": 626.25928984310485,
+    "y": 17.440132122213047,
+    "z": 3,
+    "height": 103.05532617671346,
+    "width": 1133.6085879438481,
+    "tabOrder": 3
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "Expected:",
+                    "textStyle": {
+                      "fontWeight": "bold",
+                      "fontFamily": "SF Mono, ui-monospace, Menlo, Consolas, monospace, SF Mono, ui-monospace, Menlo, Consolas, monospace",
+                      "fontSize": "13px",
+                      "color": "#14181f"
+                    }
+                  },
+                  {
+                    "value": " attended + no-shows",
+                    "textStyle": {
+                      "fontFamily": "SF Mono, ui-monospace, Menlo, Consolas, monospace, SF Mono, ui-monospace, Menlo, Consolas, monospace",
+                      "fontSize": "13px",
+                      "color": "#14181f"
+                    }
+                  },
+                  {
+                    "value": "\t\t"
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "No-show %:",
+                    "textStyle": {
+                      "fontWeight": "bold",
+                      "fontFamily": "SF Mono, ui-monospace, Menlo, Consolas, monospace, SF Mono, ui-monospace, Menlo, Consolas, monospace",
+                      "fontSize": "13px",
+                      "color": "#14181f"
+                    }
+                  },
+                  {
+                    "value": " No-show as a share of Expected. Includes appointments still open 5 hours after the start, and those cancelled after the start.",
+                    "textStyle": {
+                      "fontFamily": "SF Mono, ui-monospace, Menlo, Consolas, monospace, SF Mono, ui-monospace, Menlo, Consolas, monospace",
+                      "fontSize": "13px",
+                      "color": "#14181f"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "Late cancel %:",
+                    "textStyle": {
+                      "fontWeight": "bold",
+                      "fontFamily": "SF Mono, ui-monospace, Menlo, Consolas, monospace, SF Mono, ui-monospace, Menlo, Consolas, monospace",
+                      "fontSize": "13px",
+                      "color": "#14181f"
+                    }
+                  },
+                  {
+                    "value": " cancelled less than 24 hours before the start, as a share of all booked slots.",
+                    "textStyle": {
+                      "fontFamily": "SF Mono, ui-monospace, Menlo, Consolas, monospace, SF Mono, ui-monospace, Menlo, Consolas, monospace",
+                      "fontSize": "13px",
+                      "color": "#14181f"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "Cancel %:",
+                    "textStyle": {
+                      "fontWeight": "bold",
+                      "fontFamily": "SF Mono, ui-monospace, Menlo, Consolas, monospace, SF Mono, ui-monospace, Menlo, Consolas, monospace",
+                      "fontSize": "13px",
+                      "color": "#14181f"
+                    }
+                  },
+                  {
+                    "value": " cancelled earlier than that, as a share of all booked slots.",
+                    "textStyle": {
+                      "fontFamily": "SF Mono, ui-monospace, Menlo, Consolas, monospace, SF Mono, ui-monospace, Menlo, Consolas, monospace",
+                      "fontSize": "13px",
+                      "color": "#14181f"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "Lost vet hours:",
+                    "textStyle": {
+                      "fontWeight": "bold",
+                      "fontFamily": "SF Mono, ui-monospace, Menlo, Consolas, monospace, SF Mono, ui-monospace, Menlo, Consolas, monospace",
+                      "fontSize": "13px",
+                      "color": "#14181f"
+                    }
+                  },
+                  {
+                    "value": " booked time of no-shows and late cancellations.",
+                    "textStyle": {
+                      "fontFamily": "SF Mono, ui-monospace, Menlo, Consolas, monospace, SF Mono, ui-monospace, Menlo, Consolas, monospace",
+                      "fontSize": "13px",
+                      "color": "#14181f"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

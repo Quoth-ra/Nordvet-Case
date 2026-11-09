@@ -22,3 +22,8 @@ raw/
 # Python cache files
 __pycache__/
 *.py[cod]
+
+
+# Power BI: local settings and the cached copy of the data
+**/.pbi/localSettings.json
+**/.pbi/cache.abf

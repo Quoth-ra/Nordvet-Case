@@ -41,10 +41,10 @@ REPORT_TABLES = ["report_run", "report_clinic_summary", "report_clinic_window",
 def fetch(date_from, date_to):
     """Download clinics and the window's appointments; save every page unchanged."""
     as_of = datetime.now(timezone.utc)
-    run_dir = RAW_DIR / f"run_{as_of:%Y%m%dT%H%M%SZ}"
-    run_dir.mkdir(parents=True)
     credentials = dotenv_values(PROJECT_DIR / ".env")
     client = VetOneClient(credentials["VETONE_CLIENT_ID"], credentials["VETONE_CLIENT_SECRET"])
+    run_dir = RAW_DIR / f"run_{as_of:%Y%m%dT%H%M%SZ}"
+    run_dir.mkdir(parents=True)  # Only after a successful log-in: no empty folders.
 
     (run_dir / "clinics.json").write_text(client.get("/v1/clinics").text, encoding="utf-8")
     pages = 0

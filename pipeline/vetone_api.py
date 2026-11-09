@@ -22,24 +22,31 @@ class VetOneClient:
         self._session = requests.Session()
         self._log_in()
 
-    def _log_in(self):
-        """Exchange client ID and secret for an access token."""
-        response = self._session.post(f"{BASE_URL}/auth/token", json=self._credentials, timeout=90)
-        response.raise_for_status()
-        self._session.headers["Authorization"] = f"Bearer {response.json()['access_token']}"
-
-    def get(self, path, params=None):
-        """GET with a re-login on 401 and a pause on 429 or 5xx. Returns the response."""
+    def _request(self, method, path, **kwargs):
+        """Send a request; on 429 or 5xx, wait as long as the API asks and try again."""
         for attempt in range(ATTEMPTS):
-            response = self._session.get(f"{BASE_URL}{path}", params=params, timeout=90)
-            if response.status_code == 401:
-                print("  token rejected, logging in again")
-                self._log_in()
-                continue
+            response = self._session.request(method, f"{BASE_URL}{path}", timeout=90, **kwargs)
             if response.status_code == 429 or response.status_code >= 500:
                 wait = int(response.headers.get("Retry-After", 2 ** attempt))
                 print(f"  HTTP {response.status_code}, waiting {wait}s before retrying")
                 time.sleep(wait)
+                continue
+            return response
+        raise RuntimeError(f"Gave up on {path} after {ATTEMPTS} attempts")
+
+    def _log_in(self):
+        """Exchange client ID and secret for an access token."""
+        response = self._request("POST", "/auth/token", json=self._credentials)
+        response.raise_for_status()
+        self._session.headers["Authorization"] = f"Bearer {response.json()['access_token']}"
+
+    def get(self, path, params=None):
+        """GET with a re-login if the token was rejected. Returns the response."""
+        for _ in range(ATTEMPTS):
+            response = self._request("GET", path, params=params)
+            if response.status_code == 401:
+                print("  token rejected, logging in again")
+                self._log_in()
                 continue
             response.raise_for_status()
             return response

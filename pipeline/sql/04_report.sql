@@ -10,7 +10,7 @@
 --   last_day = the last day before today with appointments (Saturday on Mondays)
 --   7_days   = the 7 days before today
 --   28_days  = the 28 days before today (four full weeks)
--- Only active clinics are listed.
+-- Only active clinics are listed, and without the word "Nordvet" in their names.
 -- On Azure SQL: "LIMIT 1" becomes "TOP 1", "date - 7" becomes "DATEADD(day, -7, date)",
 -- and dayname(x) becomes DATENAME(weekday, x).
 
@@ -42,7 +42,7 @@ CREATE OR REPLACE VIEW report_clinic_window AS
 WITH sums AS (
     SELECT
         c.clinic_id,
-        c.name AS clinic_name,
+        REPLACE(c.name, 'Nordvet ', '') AS clinic_name,
         c.country,
         w.window_name,
         w.window_order,
@@ -119,7 +119,7 @@ WITH network AS (
 )
 SELECT
     d.clinic_id,
-    c.name AS clinic_name,
+    REPLACE(c.name, 'Nordvet ', '') AS clinic_name,
     d.scheduled_date,
     dayname(d.scheduled_date) AS weekday,
     d.slots,
@@ -161,7 +161,7 @@ network AS (
 )
 SELECT
     l.clinic_id,
-    c.name AS clinic_name,
+    REPLACE(c.name, 'Nordvet ', '') AS clinic_name,
     l.service,
     CAST(COUNT(*) AS INTEGER) AS expected,
     CAST(SUM(CASE WHEN l.inferred_status = 'no_show' THEN 1 ELSE 0 END) AS INTEGER) AS no_show,

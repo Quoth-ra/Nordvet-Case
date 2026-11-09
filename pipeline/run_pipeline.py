@@ -12,7 +12,7 @@ Steps:
   2. load    the window's appointments in DuckDB are replaced by what the API returned
   3. sql     the views in pipeline/sql/ apply the rules and build the report tables
   4. check   simple data checks; a failed check stops the run before the export
-  5. export  the report tables are written to data/export/*.parquet
+  5. export  the report tables are written as Parquet files to the Public folder (EXPORT_DIR)
 Running it twice, or after a failed run, is safe: each run replaces the same window.
 """
 import argparse
@@ -30,7 +30,8 @@ from vetone_api import VetOneClient
 PROJECT_DIR = Path(__file__).resolve().parent.parent
 RAW_DIR = PROJECT_DIR / "data" / "raw"
 DATABASE = PROJECT_DIR / "data" / "nordvet.duckdb"
-EXPORT_DIR = PROJECT_DIR / "data" / "export"
+# A fixed folder without a user name, so the Power BI report finds it on any Windows laptop.
+EXPORT_DIR = Path(r"C:\Users\Public\Nordvet\export")
 SQL_DIR = Path(__file__).resolve().parent / "sql"
 LOCAL_TIME = ZoneInfo("Europe/Copenhagen")  # Denmark and Sweden share the same clock.
 RELOAD_DAYS = 14  # All late updates seen so far landed within about 8 days.
@@ -189,7 +190,7 @@ def export(con):
     for table in REPORT_TABLES:
         out_file = EXPORT_DIR / f"{table}.parquet"
         con.execute(f"COPY (SELECT * FROM {table}) TO '{out_file.as_posix()}' (FORMAT parquet)")
-    print(f"export: {len(REPORT_TABLES)} tables written to {EXPORT_DIR.relative_to(PROJECT_DIR)}")
+    print(f"export: {len(REPORT_TABLES)} tables written to {EXPORT_DIR}")
 
 
 def main():

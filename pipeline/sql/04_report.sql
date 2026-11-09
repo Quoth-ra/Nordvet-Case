@@ -1,4 +1,4 @@
--- The tables Power BI reads (exported to data/export/*.parquet).
+-- The tables Power BI reads (exported as Parquet files by run_pipeline.py).
 --
 -- Rates (in %):
 --   no_show_rate      = no_show / (completed + no_show)

@@ -55,6 +55,8 @@ def fetch(date_from, date_to):
             print(f"  {pages} pages")
 
     # Written last: a folder with run.json is a complete download.
+    # A failed download can't damage the data, because the database is only
+    # touched after the download has fully finished.
     run_info = {"as_of": as_of.isoformat(), "date_from": date_from, "date_to": date_to, "pages": pages}
     (run_dir / "run.json").write_text(json.dumps(run_info, indent=2), encoding="utf-8")
     print(f"fetch: {pages} pages saved to {run_dir.relative_to(PROJECT_DIR)}")
